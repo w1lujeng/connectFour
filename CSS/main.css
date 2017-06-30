@@ -1,0 +1,59 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+
+table {
+    margin: auto;
+    background-color: yellow;
+    border: 5px solid blue;
+    padding: 10px;
+}
+tbody {
+    border: 5x solid blue;
+}
+
+td {
+    width: 80px;
+    height: 80px;
+    border: solid blue;
+    background-color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 50%;
+}
+
+#reset {
+    background-color: red;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+}
+
+#selectors {
+    text-align: center;
+}
+
+#selectors button {
+    margin: 5px 13px;
+    font-size: 40px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transition: 0.4s;
+    
+}
+
+#selectors button:hover {
+    transform: rotate(120deg);
+}
+
+.red {
+    background-color: red;
+}
+
+.black {
+    background-color: black;
+}
