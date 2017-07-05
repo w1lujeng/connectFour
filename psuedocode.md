@@ -37,8 +37,10 @@ set all cells to 0 with white background color
 # 3 Would be nice
 15. update player score
 16. animate checkers coming down-constant time, thanks Jim
-```temporarily fill and quickly unfill each td on 	the way down```
+```temporarily fill and quickly unfill each td on	the way down```
+
 17. smack talk audio
 18. audio effects
-	
+19. customizable boards
+20. personalization
 

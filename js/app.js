@@ -9,12 +9,6 @@ var $message = $('#message');
 
 /*----- cached element references -----*/
 
-/*----- event listeners -----*/
-
-
-/*
-$(butt0).click(addSquare) {}
-
 /*----- functions -----*/
 
 reset();
@@ -24,13 +18,11 @@ function renderBoard() {
     $('td').removeClass('red black');
     board.forEach(function(colArray, colIdx) {
       var squaresInCol = $('[col=' + colIdx + ']');
-       console.log(colArray);
       colArray.forEach(function(squareValue, rowIdx) {
         var cls = '';
         if (squareValue) cls = squareValue === 1 ? 'red' : 'black';
         squaresInCol.eq(5 - rowIdx).addClass(cls);
       });
-      console.log()
     });
     if (winner === 'T') {
         $message.html("No winners.  Would you like to play again?"); 
@@ -51,17 +43,16 @@ function reset() {
       [0,0,0,0,0,0],
       [0,0,0,0,0,0]
     ];
-    console.log(board);
     player = 1;
     winner = null;
     renderBoard();
 }
 
 
-
-
+/*----- event listeners -----*/
 
 $('#reset').on("click", reset);
+// redraw board, triangles aren't coming back
 
 $("#selectors").on('click', function(evt) {
     var colIdx = evt.target.id[3];
@@ -70,141 +61,65 @@ $("#selectors").on('click', function(evt) {
     colArray[nextPosition] = player;
     player = player * -1;
     if (!colArray.includes(0)) $(evt.target).css("visibility", "hidden");
-    // if (winner === true) $(evt.target).css("visibility", "hidden");
+    winner = getWinner();
+    console.log(winner)
     renderBoard();
 });
 
 
-/* 
-perform SLICE operation
-col0.slice(0,4)
-col0.slice(1,5)
-col0.slice(2,6)
-then
+// ************************* win logic ********************************
 
-function checkVertical(0) {
-    var col0  = []; 
-    var colSum = col0.reduce( function(total, amount){
-    return total + amount
-    });
-    if (colSum === 4){
-    console.log("Player 1 wins. Would you like to play again");
-    } else if (colSum === -4) {
-    console.log("Player 2 wins. Would you like to play again");
-    } else {
-    console.log("Tie Game. Would you like to play again");
+function getWinner() {
+    for (var colIdx = 0; colIdx < board.length; colIdx++) {
+        var winner = checkCol(colIdx);
+        if (winner) return winner;
     }
+    return 0;
 }
-perform SLICE operation
-col0.slice(0,4)
-col0.slice(1,5)
-col0.slice(2,6)
-col0.slice(3.7)
-function checkHorizontal() {
-    var row_  = []; 
-    var rowSum = col_.reduce( function(total, amount){
-    return total + amount
-    });
-    rowSum
-    if (rowSum === Math.abs(4)){
-    console.log("player 1 wins");
-    } else {
-    console.log("no winner");
+
+function checkCol(colIdx) {
+    for (var posIdx = 0; posIdx < board[colIdx].length; posIdx++) {
+        var winner = checkPos(colIdx, posIdx);
+        if (winner) return winner;
     }
+    return 0;
 }
-diagonal up
-from column1 
-    3210
-    23456 slice slice
-    123456 slice slice slice
 
-from column2
-    12345 slice slice slice
+function checkPos(colIdx, posIdx) {
+    if (!board[colIdx, posIdx]) return 0;
+    if (posIdx < 3 && isUpWin(colIdx, posIdx)) return board[colIdx][posIdx];
+    if (colIdx < 3 && isRowWin(colIdx, posIdx)) return board[colIdx][posIdx];
+    if (posIdx < 3 && colIdx < 4 && isDiagUpWin(colIdx, posIdx)) return board[colIdx][posIdx];
+    if (posIdx >=3   && colIdx <= 3   && isDiagDownWin(colIdx, posIdx)) return board[colIdx][posIdx];//
+    return 0;
+}
 
-from column3
-    12345 slice slice
+function isUpWin(colIdx, posIdx) {
+    var sum = Math.abs(board[colIdx][posIdx] + board[colIdx][posIdx+1] + board[colIdx][posIdx+2] + board[colIdx][posIdx+3]);
+    if (sum === 4) return board[colIdx][posIdx];
+    return 0;
+    // $("#selectors").off('click', function(evt);
+}
 
-from column4
-    1234
+function isRowWin(colIdx, posIdx) {
+    var sumRow = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx] + board[colIdx+2][posIdx] + board[colIdx+3][posIdx]);
+    if (sumRow === 4) return board[colIdx][posIdx];
+    return 0;
+    // $("#selectors").off('click', function(evt);
 
-diagonal down
-from column 1
-    2345
-    12345 slice slice
-    012345 slice slice slic
-
-from column 2
-    012345 slice slice slice
-
-from column 3   
-    01234 slice slice
-
-from column 4
-    01234
-
-
-
-
-
-diag up + -
-
-diag down + +
-
-
-
-
-
-
-
-
-
-
-
-
-
-var col0  = [1, 1, 1, -1, 1, 0]; 
-    var colSum = col0.reduce( function(total, amount){
-    return total + amount
-    });
-    colSum
-    if (colSum === Math.abs(4)){
-   console.log("player 1 wins");
-    } else {
-    console.log("no winner");
-    }
-function checkDiagUp() {
+}
+function isDiagUpWin(colIdx, posIdx) {
+    var sum = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx+1] + board[colIdx+2][posIdx+2] + board[colIdx+3][posIdx+3]);
+    if (sum === 4) return board[colIdx][posIdx];
+    return 0;
+    // $("#selectors").off('click', function(evt)
 
 }
 
-function checkDiagDown() {
-
+function isDiagDownWin(colIdx, posIdx) {
+    var sum = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx-1] + board[colIdx+2][posIdx-2] + board[colIdx+3][posIdx-3]);
+    if (sum === 4) return board[colIdx][posIdx];
+    return 0;
+    // $("#selectors").off('click', function(evt)
 }
 
-
-
-
-// Array.push();
-
-
-
-/*
-$("#reset").addClass("animated shake")
-*/
-
-
-/* if there is a winner
-disable all button
-$("button").prop("disabled", true);
-$("body").addClass("animated fadeOut");
-*/
-
-
-/*
-$( “#but1” ).click(function() {
-  alert( "Handler for .click() called." );
-find ccolumn
-col.findIndexOf(0)
-var availableSparue = col.findIndexOf(0)
-col{availSquRE} = 1
-IF !COL.INCLUDES -DISABLE BUTTON
-});*/
