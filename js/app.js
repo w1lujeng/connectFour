@@ -55,6 +55,10 @@ function reset() {
 $('#reset').on("click", reset);
 
 $("#selectors").on('click', function(evt) {
+    //This empty function disables clickability after win
+    if (getWinner()) {
+        return;
+    }
     var colIdx = evt.target.id[3];
     var colArray = board[colIdx];
     var nextPosition = colArray.indexOf(0);
@@ -66,26 +70,13 @@ $("#selectors").on('click', function(evt) {
     renderBoard();
 });
 
-// ************************ animation *********************************
-/*
-var a = ['a', 'b', 'c'];
-
-a.forEach(function() {
-    console.log(element);
-if player 1
-$("button").click(function(){
-    $("td").animate({player1's color: "300px"});
-    loop through array until bottom
-});
-*/
-// ************************* win logic ********************************
-
 function getWinner() {
     for (var colIdx = 0; colIdx < board.length; colIdx++) {
         var winner = checkCol(colIdx);
         if (winner) return winner;
     }
     return 0;
+
 }
 
 function checkCol(colIdx) {
@@ -98,8 +89,8 @@ function checkCol(colIdx) {
 
 function checkPos(colIdx, posIdx) {
     if (!board[colIdx, posIdx]) return 0;
-    if (posIdx < 3 && isUpWin(colIdx, posIdx)) return board[colIdx][posIdx];
-    if (colIdx < 3 && isRowWin(colIdx, posIdx)) return board[colIdx][posIdx];
+    if (posIdx <= 3 && isUpWin(colIdx, posIdx)) return board[colIdx][posIdx];
+    if (colIdx <= 3 && isRowWin(colIdx, posIdx)) return board[colIdx][posIdx];
     if (posIdx < 3 && colIdx < 4 && isDiagUpWin(colIdx, posIdx)) return board[colIdx][posIdx];
     if (posIdx >=3   && colIdx <= 3   && isDiagDownWin(colIdx, posIdx)) return board[colIdx][posIdx];//
     return 0;
@@ -115,13 +106,12 @@ function isRowWin(colIdx, posIdx) {
     var sumRow = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx] + board[colIdx+2][posIdx] + board[colIdx+3][posIdx]);
     if (sumRow === 4) return board[colIdx][posIdx];
     return 0;
-
 }
+
 function isDiagUpWin(colIdx, posIdx) {
     var sum = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx+1] + board[colIdx+2][posIdx+2] + board[colIdx+3][posIdx+3]);
     if (sum === 4) return board[colIdx][posIdx];
     return 0;
-
 }
 
 function isDiagDownWin(colIdx, posIdx) {
