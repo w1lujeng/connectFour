@@ -46,6 +46,8 @@ function reset() {
     player = 1;
     winner = null;
     renderBoard();
+    $("#selectors button").css("visibility", "visible");
+
 }
 
 
@@ -98,21 +100,18 @@ function isUpWin(colIdx, posIdx) {
     var sum = Math.abs(board[colIdx][posIdx] + board[colIdx][posIdx+1] + board[colIdx][posIdx+2] + board[colIdx][posIdx+3]);
     if (sum === 4) return board[colIdx][posIdx];
     return 0;
-    // $("#selectors").off('click', function(evt);
 }
 
 function isRowWin(colIdx, posIdx) {
     var sumRow = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx] + board[colIdx+2][posIdx] + board[colIdx+3][posIdx]);
     if (sumRow === 4) return board[colIdx][posIdx];
     return 0;
-    // $("#selectors").off('click', function(evt);
 
 }
 function isDiagUpWin(colIdx, posIdx) {
     var sum = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx+1] + board[colIdx+2][posIdx+2] + board[colIdx+3][posIdx+3]);
     if (sum === 4) return board[colIdx][posIdx];
     return 0;
-    // $("#selectors").off('click', function(evt)
 
 }
 
@@ -120,6 +119,5 @@ function isDiagDownWin(colIdx, posIdx) {
     var sum = Math.abs(board[colIdx][posIdx] + board[colIdx+1][posIdx-1] + board[colIdx+2][posIdx-2] + board[colIdx+3][posIdx-3]);
     if (sum === 4) return board[colIdx][posIdx];
     return 0;
-    // $("#selectors").off('click', function(evt)
 }
 

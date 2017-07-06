@@ -2,8 +2,15 @@
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
+body {
+    background-image: url("sky.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-
+#mainTitle {
+    color: white;
+}
 table {
     margin: auto;
     background-color: yellow;
