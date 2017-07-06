@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    background-image: url("sky.jpeg");
+    background-image: url("blue_sky.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

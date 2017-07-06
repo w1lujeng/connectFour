@@ -50,11 +50,9 @@ function reset() {
 
 }
 
-
 /*----- event listeners -----*/
 
 $('#reset').on("click", reset);
-// redraw board, triangles aren't coming back
 
 $("#selectors").on('click', function(evt) {
     var colIdx = evt.target.id[3];
@@ -68,7 +66,18 @@ $("#selectors").on('click', function(evt) {
     renderBoard();
 });
 
+// ************************ animation *********************************
+/*
+var a = ['a', 'b', 'c'];
 
+a.forEach(function() {
+    console.log(element);
+if player 1
+$("button").click(function(){
+    $("td").animate({player1's color: "300px"});
+    loop through array until bottom
+});
+*/
 // ************************* win logic ********************************
 
 function getWinner() {
