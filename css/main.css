@@ -56,9 +56,7 @@ td {
 #missedClick {
     height: 20px;
 }
-#trashTalk {
-    height: 20px;
-}
+
 #selectors button:hover {
     transform: rotate(120deg);
 }
