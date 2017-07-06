@@ -63,12 +63,8 @@ td {
     outline: none;
     transition: 0.4s;
     color: white;
-
-<<<<<<< HEAD
-=======
 }
 
->>>>>>> master
 #selectors button:hover {
     transform: rotate(120deg);
 }
