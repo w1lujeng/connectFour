@@ -1,4 +1,3 @@
-
 /*----- app's state (variables) -----*/
 
 var winner;
@@ -6,8 +5,6 @@ var board;
 var player;
 var $resetBtn = $('#reset');
 var $message = $('#message');
-
-/*----- cached element references -----*/
 
 /*----- functions -----*/
 
@@ -60,6 +57,13 @@ $("#selectors").on('click', function(evt) {
         return;
     }
     var colIdx = evt.target.id[3];
+    //bug that turned into fun feature. Fixed bug where clicking outside the arrow created colIdx(e) error
+    if (colIdx === "e") {
+        $("#missedClick").html("Your aim SUCKS dude! Click <strong>INSIDE</strong> the arrow.")
+        return;
+    }
+    
+    $("#missedClick").html("");
     var colArray = board[colIdx];
     var nextPosition = colArray.indexOf(0);
     colArray[nextPosition] = player;
@@ -119,4 +123,3 @@ function isDiagDownWin(colIdx, posIdx) {
     if (sum === 4) return board[colIdx][posIdx];
     return 0;
 }
-
