@@ -10,10 +10,17 @@ body {
 
 #mainTitle {
     color: white;
+    margin: 80px 0px 0px 180px;
 }
 #message {
     color: white;
+    margin: 0px 0px 0px 180px;
 }
+#missedClick {
+    height: 20px;
+    margin: 20px 0px 0px 180px;
+}
+
 table {
     margin: auto;
     background-color: yellow;
@@ -40,6 +47,8 @@ td {
     color: white;
     padding: 15px;
     font-size: 20px;
+    margin: 0px 0px 100px 180px;
+
 }
 
 #selectors {
@@ -55,10 +64,6 @@ td {
     transition: 0.4s;
     color: white;
 
-}
-
-#missedClick {
-    height: 20px;
 }
 
 #selectors button:hover {
