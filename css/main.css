@@ -10,15 +10,15 @@ body {
 
 #mainTitle {
     color: white;
-    margin: 50px 0px 0px 180px;
+    margin: 80px 0px 0px 180px;
 }
 #message {
     color: white;
-    margin: 0px 0px 20px 180px;
+    margin: 0px 0px 0px 180px;
 }
 #missedClick {
-    height: 25px;
-    margin: 0px 0px 0px 180px;
+    height: 20px;
+    margin: 20px 0px 0px 180px;
 }
 
 table {
@@ -35,7 +35,7 @@ td {
     width: 80px;
     height: 80px;
     border: solid blue;
-    background-color: white;
+    background-color:#4E90CC;
     vertical-align: middle;
     text-align: center;
     font-size: 40px;
@@ -47,7 +47,8 @@ td {
     color: white;
     padding: 15px;
     font-size: 20px;
-    margin: 0px 0px 180px 180px;
+    margin: 0px 0px 100px 180px;
+
 }
 
 #selectors {
@@ -61,9 +62,13 @@ td {
     background-color: transparent;
     outline: none;
     transition: 0.4s;
-    
+    color: white;
+
+<<<<<<< HEAD
+=======
 }
 
+>>>>>>> master
 #selectors button:hover {
     transform: rotate(120deg);
 }
