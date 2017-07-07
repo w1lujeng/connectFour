@@ -90,7 +90,7 @@ function checkCol(colIdx) {
     }
     return 0;
 }
-
+/*--------------------------- win logic ------------------------*/
 function checkPos(colIdx, posIdx) {
     if (!board[colIdx, posIdx]) return 0;
     if (posIdx <= 3 && isUpWin(colIdx, posIdx)) return board[colIdx][posIdx];

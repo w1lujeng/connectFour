@@ -6,7 +6,11 @@ is a two-player game in which the players first choose a color and then take tur
 
 ### Technologies used
 
-This game was built with HTML5, CSS3 and JavaScript.  It also uses a bit of the jQuery library for some of the DOM manipulation.
+This game was built with:
+* HTML5
+* CSS3 
+* JavaScript.  
+* Connect Four also uses a bit of the jQuery library for some of the DOM manipulation. This will help facilitate some of the version 2.0 features.
 
 ### Getting started
 
